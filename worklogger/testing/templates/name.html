@@ -11,16 +11,40 @@
 
 <script>
 
-function f(form, header, project, body) {
+function f(form, header, project, body, tags) {
 	att = form.action;
+	window.alert(form.action);
     $.post(att, {
         header: header.value,
         project: project.value,
-        body: body.value
+        body: body.value,
+        tags: tags.value
     }).done(function (data) {
         alert(data);
     });
+    window.alert(form.action);
     return true;
+}
+
+function ajax_fn(form, header, project, body, tags) {
+	// var header = document.getElementById("header").value;
+	// var project = document.getElementById("project").value;
+	// var body = document.getElementById("body").value;
+	// var tags = document.getElementById("tags").value;
+	var dataString = 'header=' + header.value + '&project=' + project.value + '&body=' + body.value + '&tags=' + tags.value;
+	$.ajax({
+	type: "POST",
+	url: form.action,
+	data: dataString,
+	cache: false,
+	success: function(html) {
+					alert(html);
+				},
+	error: function(data) {
+				window.alert("error");
+            }
+	});
+	return true;
 }
 
 </script>
@@ -40,5 +64,6 @@ function f(form, header, project, body) {
 	<input type="text" name="tags">
 	<br>
 	<input type="submit" value="Submit" />
-	<!-- <input type="button" name ="submit" onclick="return f(this.form ,this.form.header ,this.form.project, this.form.body) " > -->
+	<br>
+	<input id="submit" onclick="return ajax_fn(this.form ,this.form.header ,this.form.project, this.form.body, this.form.tags)" type="button" value="Submit_trial">
 </form>
