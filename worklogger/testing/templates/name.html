@@ -1,0 +1,44 @@
+<!-- <form action="/testing/receive_message/" method="post">
+    <input type='hidden' name='csrfmiddlewaretoken' value='SWmogmsjhATHZYezJIQr7oAxl1ZqGkvS' />
+    <tr><th><label for="id_Header">header:</label></th><td><input id="id_Header" maxlength="100" name="Header" type="text" /></td></tr>
+<tr><th><label for="id_Project">project:</label></th><td><input id="id_Project" maxlength="100" name="Project" type="text" /></td></tr>
+<tr><th><label for="id_Message">body:</label></th><td><textarea cols="40" id="id_Message" name="Message" rows="10">
+</textarea></td></tr>
+    <input type="submit" value="Submit" />
+</form>
+
+ -->
+
+<script>
+
+function f(form, header, project, body) {
+	att = form.action;
+    $.post(att, {
+        header: header.value,
+        project: project.value,
+        body: body.value
+    }).done(function (data) {
+        alert(data);
+    });
+    return true;
+}
+
+</script>
+
+<form action="/testing/test/" method="post">
+	{% csrf_token %}
+	Header:
+	<input type="text" name="header">
+	<br>
+	Project:
+	<input type="text" name="project">
+	<br>
+	Body:
+	<input type="text" name="body" cols="50" rows="10">
+	<br>
+	Tags:
+	<input type="text" name="tags">
+	<br>
+	<input type="submit" value="Submit" />
+	<!-- <input type="button" name ="submit" onclick="return f(this.form ,this.form.header ,this.form.project, this.form.body) " > -->
+</form>
