@@ -8,7 +8,9 @@ def test(request):
 	# x.save()
 	# print x
 	# return HttpResponse('ddd')
+	print "came just here"
 	if request.method == 'POST':
+		print "came here"
 		print request.POST.get('header')
 		print request.POST.get('project')
 		print request.POST.get('body')
