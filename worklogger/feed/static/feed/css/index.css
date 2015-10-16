@@ -1,0 +1,38 @@
+<style type="text/css">
+	tbody.display {
+		overflow: auto;
+		height: 200px;
+		color: blue;
+		display: block;
+	}
+
+	table thead {
+		display: block;
+		background: #eee;
+	}
+
+	
+	
+	th {
+		padding: 5px;
+	    width: 500px;
+    	border: 1px solid #eee;
+	    word-wrap: break-word;
+	    overflow: hidden;
+	}
+
+	td {
+		padding: 5px;
+    	border: 1px solid #eee;
+    	width: 500px;
+    	word-wrap: break-word;
+		overflow: hidden;
+	}
+
+	.half_divs div {
+		width: 50%;
+		float: left;
+  		clear: none;
+	}
+
+	</style>

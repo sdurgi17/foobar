@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseServerError, HttpResponseBadRequest
 import json
 import utils
+import os
 
 from commons.models import Project, Post
 
@@ -17,7 +18,8 @@ def user_projects(request):
         "project_contribution": project_contribution,
         "user_tags": user_tags
     }
-    return HttpResponse('hi')
+    json_dump = json.dumps(data)
+    return render(request,'feed/index.html', {'json_dump' : json_dump})
 
 
 def project_tasks(request):

@@ -1,0 +1,101 @@
+{% load staticfiles %}
+<html>
+<head>
+	<title>FooBar</title>
+	<script src="{% static 'feed/js/project.js' %}"></script>
+	<style type="text/css">
+	tbody.display {
+		overflow: auto;
+		height: 200px;
+		color: blue;
+		display: block;
+	}
+
+	table thead {
+		display: block;
+		background: #eee;
+	}
+
+	table {
+		
+		box-shadow: 10px 10px 5px #888888;
+		border:1px solid #000000;
+		text-align: center;
+		table-layout: fixed;
+		width: 90%;
+		margin-left: 5%;
+		margin-right: 5%;
+		margin-top: 5%;
+	}
+	
+	th {
+		padding: 5px;
+	    width: 500px;
+    	border: 1px solid #eee;
+	    word-wrap: break-word;
+	    overflow: hidden;
+	}
+
+	td {
+		padding: 5px;
+    	border: 1px solid #eee;
+    	width: 500px;
+    	word-wrap: break-word;
+		overflow: hidden;
+	}
+
+	.half_divs div {
+		width: 50%;
+		float: left;
+  		clear: none;
+	}
+
+	</style>
+</head>
+
+<body>
+	<div id="feed">
+		<div id="project">
+			<table id="project_table">
+				<thead>
+					<tr>
+						<th style="width:70%;">Project Name</th>
+						<th>Last Updated</th>
+					</tr>
+				</thead>
+				<tbody id="project_body" class="display">
+
+				</tbody>
+			</table>
+		</div>
+		<div class="half_divs">
+			<div id="project_contribution">
+				<table id="project_contribution_table">
+					<thead>
+						<tr>
+							<th style="width:70%;">Project Name</th>
+							<th>Contribution</th>
+						</tr>
+					</thead>
+					<tbody id="projects_contribution_body" class="display">
+
+					</tbody>
+				</table>
+			</div>
+			<div id="project_tags">
+				<table id="project_tags_table">
+					<thead>
+						<tr>
+							<th style="width:70%;">Tag</th>
+							<th>Percentage</th>
+						</tr>
+					</thead>
+					<tbody id="projects_tags_body" class="display">
+						
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
