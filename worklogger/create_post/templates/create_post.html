@@ -1,0 +1,52 @@
+<script>
+function f(form, header, project, body, tags) {
+	att = form.action;
+	window.alert(form.action);
+    $.post(att, {
+        header: header.value,
+        project: project.value,
+        body: body.value,
+        tags: tags.value
+    }).done(function (data) {
+        alert(data);
+    });
+    window.alert(form.action);
+    return true;
+}
+
+// function ajax_fn(form, header, project, body, tags) {
+// 	var dataString = 'header=' + header.value + '&project=' + project.value + '&body=' + body.value + '&tags=' + tags.value;
+// 	$.ajax({
+// 	type: "POST",
+// 	url: form.action,
+// 	data: dataString,
+// 	cache: false,
+// 	success: function(html) {
+// 					alert(html);
+// 				},
+// 	error: function(data) {
+// 				window.alert("error");
+//             }
+// 	});
+// 	return true;
+// }
+</script>
+
+<form action="/create_post/create_project/" method="post">
+	{% csrf_token %}
+	Header:
+	<input type="text" name="header">
+	<br>
+	Project:
+	<input type="text" name="project">
+	<br>
+	Body:
+	<input type="text" name="body" cols="50" rows="10">
+	<br>
+	Tags:
+	<input type="text" name="tags">
+	<br>
+	<input type="submit" value="Submit" />
+	<br>
+	<input id="submit" onclick="return ajax_fn(this.form ,this.form.header ,this.form.project, this.form.body, this.form.tags)" type="button" value="Submit_trial">
+</form>
