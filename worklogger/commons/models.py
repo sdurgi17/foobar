@@ -13,15 +13,15 @@ class User(models.Model):
 class Project(models.Model):
     name = models.CharField(max_length=255, blank=True)
     details = models.CharField(max_length=255, blank=True)
-    user_id = models.ForeignKey(User)
+    user = models.ForeignKey(User)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     is_completed = models.BooleanField(default=False)    
 
 
 class Post(models.Model):
-    user_id = models.ForeignKey(User)
-    project_id = models.ForeignKey(Project)
+    user = models.ForeignKey(User)
+    project = models.ForeignKey(Project)
     title = models.CharField(max_length=255, blank=True)
     details = models.CharField(max_length=255, blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
@@ -33,8 +33,8 @@ class Tag(models.Model):
     count = models.IntegerField(blank=True)
 
 class Post_To_Tag(models.Model):
-    post_id = models.ForeignKey(Post)
-    tag_id = models.ForeignKey(Tag)
+    post = models.ForeignKey(Post)
+    tag = models.ForeignKey(Tag)
     
 
 
