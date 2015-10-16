@@ -36,6 +36,8 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'south',
+    'commons',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -57,8 +59,8 @@ WSGI_APPLICATION = 'worklogger.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.contrib.gis.db.backends.postgis',
-        'NAME': 'local_postgres',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'worklogger',
         'USER': 'srikar',
         'PASSWORD': 'housing',
         'HOST': '10.1.6.120',
