@@ -7,7 +7,7 @@ class User(models.Model):
     password = models.CharField(max_length=255, blank=True)
     organisation = models.CharField(max_length=255, blank=True)
     position = models.CharField(max_length=255, blank=True)
-    session_id = models.IntegerField(blank=True)
+    session_id = models.CharField(max_length=255, blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
 
 class Project(models.Model):
