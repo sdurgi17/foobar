@@ -42,6 +42,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'commons',
     'worklogger',
+    'first_page',
     'social.apps.django_app.default',
 )
 
@@ -73,7 +74,7 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
 
-ROOT_URLCONF = 'commons.urls'
+ROOT_URLCONF = 'worklogger.urls'
 
 WSGI_APPLICATION = 'worklogger.wsgi.application'
 
