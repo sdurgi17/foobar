@@ -1,4 +1,4 @@
-function render_data(projects_data) {
+function render_data(projects_data, user_id) {
 	// var projects_data = '{{projects_data}}';
 	// projects_data = JSON.parse(projects_data);
 	// console.log(projects_data);
@@ -17,14 +17,17 @@ function render_data(projects_data) {
 	// // console.log(projects_data);
 
 	var tbody = document.getElementById("project_body");
-	console.log();
 	for (var project_id in projects_data['user_feed']) {
-		for (var project in projects_data['user_feed'][project_id]) {
 			var tr = document.createElement('tr');
 			var td1 = document.createElement('td');
 			var td2 = document.createElement('td'); 
 
-			td1.innerHTML = "<button type='button' class='btn btn-link'>" + projects_data['user_feed'][project_id]['name'] + "</button>";
+			td1.innerHTML = "<button type='button' class='btn btn-link'>" + 
+						"<a href=project_tasks?user_id=" + user_id + "&project_id=" + project_id + 
+						"&project_name=" + projects_data['user_feed'][project_id]['name']
+						+ ">" + 
+						projects_data['user_feed'][project_id]['name'] + "</a>"
+						"</button>";
 			td2.innerHTML = projects_data['user_feed'][project_id]['updated_at'];
 
 			td1.style.width = "70%";
@@ -33,12 +36,11 @@ function render_data(projects_data) {
 			tr.appendChild(td2);
 
 			tbody.appendChild(tr);
-		}
 	}
 
 	var tbody = document.getElementById("projects_contribution_body");
 	for (var project_id in projects_data['project_contribution']) {
-		for (var project in projects_data['project_contribution'][project_id]) {
+		
 			var tr = document.createElement('tr');
 			var td1 = document.createElement('td');
 			var td2 = document.createElement('td'); 
@@ -52,12 +54,10 @@ function render_data(projects_data) {
 			tr.appendChild(td2);
 
 			tbody.appendChild(tr);
-		}
 	}
 
 	var tbody = document.getElementById("projects_tags_body");
 	for (var project_id in projects_data['user_tags']) {
-		for (var project in projects_data['user_tags'][project_id]) {
 			var tr = document.createElement('tr');
 			var td1 = document.createElement('td');
 			var td2 = document.createElement('td'); 
@@ -71,6 +71,9 @@ function render_data(projects_data) {
 			tr.appendChild(td2);
 
 			tbody.appendChild(tr);
-		}
 	}
+}
+
+function create_new_project(user_id) {
+	window.location = '../create_post/create_project?user_id=' + user_id;
 }

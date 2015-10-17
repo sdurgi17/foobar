@@ -1,0 +1,110 @@
+{% load staticfiles %}
+<html>
+<head>
+	<title>FooBar</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+	<script src="{% static 'feed/js/post.js' %}"></script>
+	<script type="text/javascript">
+		function set_project_header() {
+			var project_head = document.getElementById("project_head");
+			project_head.innerHTML = "Project: " + getParameterByName("project_name");
+		}
+
+		function getParameterByName(name) {
+		    name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+		    var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+		        results = regex.exec(location.search);
+		    return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+		}
+
+		window.onload = function() {
+			var data = "{{json_dump}}";
+			data = data.replace(/&quot;/ig, '"');
+	        data = data.replace(/u&#39;/g, '"');
+	        data = data.replace(/&#39;/g, '"');
+	        data = data.replace(/\\n/g, "\\n")
+	               .replace(/\\'/g, "\\'")
+	               .replace(/\\"/g, '\\"')
+	               .replace(/\\&/g, "\\&")
+	               .replace(/\\r/g, "\\r")
+	               .replace(/\\t/g, "\\t")
+	               .replace(/\\b/g, "\\b")
+	               .replace(/\\f/g, "\\f");
+	        data = data.replace(/[\u0000-\u0019]+/g,"");
+			data = JSON.parse(data);
+			console.log(data);
+			console.log(getParameterByName('user_id'));
+
+			set_project_header();
+
+			render_data(data, getParameterByName('user_id'));
+		}
+	</script>
+	<style type="text/css">
+	.same_horizon div {
+		width: 45%;
+		float: left;
+  		clear: none;
+  		margin: 1%;
+	}
+
+
+	</style>
+</head>
+
+<body>
+	<div id="feed" class="container">
+		<div>
+			<button type="button" class="btn btn-primary" style="margin:30px;" onClick="create_new_project()">Create New Project</button>
+		</div>	
+		<dt class="lead" id="project_head"></dt>
+		<div id="project_feed" class="table-responsive">
+			<table id="project_feed_table" class="table table-striped table-bordered table-hover table-condensed">
+				<thead>	
+					<tr class="active">
+						<th style="width:25%;">Title</th>
+						<th style="width:60%;">Details</th>
+						<th style="width:15%;">Last Updated</th>
+					</tr>
+				</thead>
+				<tbody id="project_feed_body">
+
+				</tbody>
+			</table>
+		</div>
+		<div class="same_horizon">
+			<div id="project_feed2" class="table-responsive">
+				<dt class="lead">Contribution in each project</dt>
+				<table id="project_fe2ed_table" class="table table-striped table-bordered table-hover table-condensed">
+					<thead>
+						<tr>
+							<th style="width:70%;">Project Name</th>
+							<th>Contribution</th>
+						</tr>
+					</thead>
+					<tbody id="proje2ct_feed_body" class="display">
+
+					</tbody>
+				</table>
+			</div>
+			<div id="user_tags" class="table-responsive">
+				<dt class="lead">Popular tags used in the project</dt>
+				<table id="user_tags_table" class="table table-striped table-bordered table-hover table-condensed">
+					<thead>
+						<tr>
+							<th style="width:70%;">Tag</th>
+							<th>Percentage</th>
+						</tr>
+					</thead>
+					<tbody id="user_tags_body" class="display">
+						
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

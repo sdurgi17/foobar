@@ -19,7 +19,7 @@ def user_projects(request):
         "user_tags": user_tags
     }
     json_dump = json.dumps(data)
-    return render(request,'feed/index.html', {'json_dump' : json_dump})
+    return render(request,'feed/project_view.html', {'json_dump' : json_dump})
 
 
 def project_tasks(request):
@@ -33,4 +33,5 @@ def project_tasks(request):
         "user_tags": user_tags,
         "hard_tasks": hard_tasks
     }
-    return HttpResponse('hello')
+    json_dump = json.dumps(data)
+    return render(request,'feed/post_view.html', {'json_dump' : json_dump})

@@ -38,6 +38,7 @@ INSTALLED_APPS = (
     'south',
     'commons',
     'feed',
+    'create_post',
 )
 
 MIDDLEWARE_CLASSES = (
