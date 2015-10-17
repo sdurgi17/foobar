@@ -12,18 +12,31 @@ BASE_DIR = os.path.abspath(os.path.dirname(__file__))
 
 
 @csrf_exempt
-def create_project(request):
+def store_uid(request):
 	try:
 		if request.method == 'POST':
 			user_id = request.POST.get('user_id', 1)
 			user = User.objects.filter(id = user_id)[0]
 			project_name = request.POST.get('project_name', 'random')
 			project_details = request.POST.get('project_details', '')
+			print user_id, project_name, project_details
 			new_project = Project(name= project_name, user=user, details=project_details)
 			new_project.save()
-		return render(request, 'create_project.html', {})
+		return render(request, 'new_post.html' , dict(user = user_id, project = new_project.id))
 	except Exception as e:
 		return HttpResponse(json.dumps(e))
+
+
+@csrf_exempt
+def create_project(request):
+	try:
+		if request.method == 'GET':
+			user_id = request.GET.get('user_id', 1)
+		return render(request, 'create_project.html')
+
+	except Exception as e:
+		return HttpResponse(json.dumps(e))
+
 
 
 @csrf_exempt
@@ -33,6 +46,7 @@ def create_post(request):
 			user_id = request.POST.get('user_id', 1)
 			user = User.objects.filter(id = user_id)[0]
 			project_id = request.POST.get('project_id', -1)
+			# return HttpResponse(json.dumps(user_id+project_id))
 			if project_id == -1:
 				project_id = Project.objects.filter(name = 'random', user = user)[0]
 			else:
@@ -65,7 +79,6 @@ def create_post(request):
 					tag_id = Tag.objects.filter(id=new_tag.id)[0]
 					post_tag = Post_To_Tag(post=post_id, tag=tag_id)
 					post_tag.save()
-			# return HttpResponse("adios")
-		return render(request, 'create_post.html', {})
+		return render(request, 'feed/user_projects.html', dict(user_id=user_id))
 	except Exception as e:
 		return HttpResponse(e)
