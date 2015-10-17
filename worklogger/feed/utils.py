@@ -103,7 +103,7 @@ def get_project_feed(user_id, project_id):
         temp = {
             'title': row.title,
             'details': row.details,
-            'created at': str(row.created_at)
+            'created at': str(row.created_at.date() )
         }
         final_task_details.append(temp)
     return final_task_details

@@ -1,0 +1,336 @@
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+ 
+<script>
+ 
+$(document).ready(function() {
+ 
+$('.form').find('input, textarea').on('keyup blur focus', function(e) {
+ 
+  var $this = $(this),
+    label = $this.prev('label');
+ 
+  if (e.type === 'keyup') {
+    if ($this.val() === '') {
+      label.removeClass('active highlight');
+    } else {
+      label.addClass('active highlight');
+    }
+  } else if (e.type === 'blur') {
+    if ($this.val() === '') {
+      label.removeClass('active highlight');
+    } else {
+      label.removeClass('highlight');
+    }
+  } else if (e.type === 'focus') {
+ 
+    if ($this.val() === '') {
+      label.removeClass('highlight');
+    } else if ($this.val() !== '') {
+      label.addClass('highlight');
+    }
+  }
+ 
+});
+ 
+$('#project_textarea').on({
+    mouseenter: function(){
+        $('#project_label').hide()
+    },
+    mouseleave: function(){
+        var inp = $("#project_textarea").val();
+        if(inp.length == 0)
+        {
+           $('#project_label').show()
+        }
+    },
+    keypress: function(){
+        $('#project_label').hide()
+    },
+});
+ 
+$('#details_textarea').on({
+    mouseenter: function(){
+        $('#details_label').hide()
+    },
+    mouseleave: function(){
+        var inp = $("#details_textarea").val();
+        if(inp.length == 0)
+        {
+           $('#details_label').show()
+        }
+    },
+    keypress: function(){
+        $('#details_label').hide()
+    },
+});
+ 
+ 
+$('#title_textarea').on({
+    mouseenter: function(){
+        $('#title_label').hide()
+    },
+    mouseleave: function(){
+        var inp = $("#title_textarea").val();
+        if(inp.length == 0)
+        {
+           $('#title_label').show()
+        }
+    },
+    keypress: function(){
+        $('#title_label').hide()
+    },
+});
+ 
+ 
+$('#tags_textarea').on({
+    mouseenter: function(){
+        $('#tags_label').hide()
+    },
+    mouseleave: function(){
+        var inp = $("#tags_textarea").val();
+        if(inp.length == 0)
+        {
+           $('#tags_label').show()
+        }
+    },
+    keypress: function(){
+        $('#tags_label').hide()
+    },
+});
+ 
+});
+ 
+</script>
+ 
+ 
+ 
+<style>
+*, *:before, *:after {
+  box-sizing: border-box;
+}
+
+html {
+  overflow-y: scroll;
+}
+
+body {
+  background: #ffffff;
+  font-family: 'Titillium Web', sans-serif;
+}
+
+a {
+  text-decoration: none;
+  color: #1ab188;
+  -webkit-transition: .5s ease;
+          transition: .5s ease;
+}
+a:hover {
+  color: #179b77;
+}
+
+.form {
+  background: #ffffff;
+  padding: 40px;
+  max-width: 600px;
+  margin: 40px auto;
+  border-radius: 4px;
+  box-shadow: 0 4px 10px 4px rgba(19, 35, 47, 0.3);
+}
+
+.tab-group {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 40px 0;
+}
+.tab-group:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+.tab-group li a {
+  display: block;
+  text-decoration: none;
+  padding: 15px;
+  background: rgba(160, 179, 176, 0.25);
+  color: #a0b3b0;
+  font-size: 20px;
+  float: left;
+  width: 50%;
+  text-align: center;
+  cursor: pointer;
+  -webkit-transition: .5s ease;
+          transition: .5s ease;
+}
+.tab-group li a:hover {
+  background: #179b77;
+  color: #000000;
+}
+.tab-group .active a {
+  background: #1ab188;
+  color: #000000;
+}
+
+/*.tab-content > div:last-child {
+  display: none;
+}
+*/
+h1 {
+  text-align: center;
+  color: #000000;
+  font-weight: 300;
+  margin: 0 0 40px;
+}
+
+label {
+  position: absolute;
+  -webkit-transform: translateY(6px);
+      -ms-transform: translateY(6px);
+          transform: translateY(6px);
+  left: 13px;
+  color: #a0b3b0;
+  -webkit-transition: all 0.25s ease;
+          transition: all 0.25s ease;
+  -webkit-backface-visibility: hidden;
+  pointer-events: none;
+  font-size: 18px;
+}
+label .req {
+  margin: 2px;
+  color: #1ab188;
+}
+
+label.active {
+  -webkit-transform: translateY(50px);
+      -ms-transform: translateY(50px);
+          transform: translateY(50px);
+  left: 2px;
+  font-size: 12px;
+}
+label.active .req {
+  opacity: 0;
+}
+
+label.highlight {
+  color: #000000;
+}
+
+input, textarea {
+  font-size: 22px;
+  display: block;
+  width: 100%;
+  height: 13%;
+  padding: 5px 10px;
+  background: none;
+  background-image: none;
+  border: 1px solid #a0b3b0;
+  color: #000000;
+  border-radius: 0;
+  -webkit-transition: border-color .25s ease, box-shadow .25s ease;
+          transition: border-color .25s ease, box-shadow .25s ease;
+}
+
+.details {
+  font-size: 22px;
+  /*display: block;*/
+  width: 100%;
+  height: 50%;
+  padding: 27px 10px;
+  background: none;
+  background-image: none;
+  border: 1px solid #a0b3b0;
+  color: #000000;
+  border-radius: 0;
+  -webkit-transition: border-color .25s ease, box-shadow .25s ease;
+          transition: border-color .25s ease, box-shadow .25s ease;
+}
+
+input:focus, textarea:focus {
+  outline: 0;
+  border-color: #300030;
+}
+
+textarea {
+  border: 2px solid #a0b3b0;
+  resize: vertical;
+}
+
+.field-wrap {
+  position: relative;
+  margin-bottom: 40px;
+}
+
+.button {
+  border: 0;
+  outline: none;
+  border-radius: 0;
+  padding: 15px 0;
+  font-size: 2rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: .1em;
+  background: #a0b3b0;
+  color: #ffffff;
+  -webkit-transition: all 0.5s ease;
+          transition: all 0.5s ease;
+  -webkit-appearance: none;
+}
+.button:hover, .button:focus {
+  background: #300030;
+}
+
+.button-block {
+  display: block;
+  width: 100%;
+}
+
+</style>
+
+ 
+ 
+<div class="form">
+     
+      <div class="tab-content">
+        <div id="post">  
+          <h1>Create a Post</h1>
+         
+          <form action="/create_post/create_post" method="post">
+         
+          <div class="field-wrap">
+            <label id="project_label">
+              Project<span class="req"></span>
+            </label>
+            <input id="project_textarea" name="project_name" type="text"required autocomplete="off"/>
+          </div>
+         
+ 
+          <div class="field-wrap">
+            <label id="title_label">
+              Title<span class="req">*</span>
+            </label>
+            <input id="title_textarea" name="title" type="text"required autocomplete="off"/>
+          </div>
+         
+          <div class="field-wrap">
+            <label id="details_label">
+              Details<span class="req">*</span>
+            </label>
+            <textarea id="details_textarea" name="details" class="details"type="text"></textarea>
+          </div>
+         
+          <div class="field-wrap">
+            <label id="tags_label">
+              Tags<span class="req"></span>
+            </label>
+            <input id="tags_textarea"type="text" name="tags" required autocomplete="off"/>
+          </div>
+ 
+          <INPUT type="hidden" name="user_id" value={{user}}>
+          <button type="submit" class="button button-block"/>Create Post</button>
+         
+          </form>
+ 
+        </div>
+       
+      </div>
+     
+</div>
