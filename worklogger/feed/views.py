@@ -50,6 +50,7 @@ def user_projects(request):
                         "user_tags": user_tags
                     }
                     json_dump = json.dumps(data)
+                    print json_dump
                     return render(request,'feed/project_view.html', {'json_dump' : json_dump})
     except Exception as e:
         return HttpResponse(str(e))

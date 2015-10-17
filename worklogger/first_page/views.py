@@ -14,6 +14,7 @@ from django.views.decorators.csrf import csrf_exempt
 
 @csrf_exempt
 def login(request):
+    print request.POST
     if request.method == 'POST':
         context = RequestContext(request,
                                {'request': request,
@@ -25,7 +26,9 @@ def login(request):
             p_ = user_exist.password
             if password == user_exist.password:
                 user_id = (User.objects.filter(email= email)[0]).id
-                return  render(request,'feed/project_view.html', {'user_id':user_id})
+                print user_id
+                json_dump = json.dumps({'user_id':user_id})
+                return  render(request,'feed/project_view.html', {'json_dump' : json_dump})
             else:
                 return HttpResponse("PASSWORD DO NOT MATCH")
         except Exception as e:
