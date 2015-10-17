@@ -22,7 +22,6 @@ def dictfetchall(cursor):
             for row in cursor.fetchall()
             ]
 
-
 def execute_query(query, cur):
     try:
         cur.execute(query)

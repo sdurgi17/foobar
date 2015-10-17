@@ -1,6 +1,7 @@
-from django.conf.urls import patterns, include, url
+from django.conf.urls import  include, url, patterns
 
 from django.contrib import admin
+
 admin.autodiscover()
 
 urlpatterns = patterns('',
@@ -11,5 +12,7 @@ urlpatterns = patterns('',
                     url(r'^feed/', include('feed.urls')),
 				    url(r'^admin/', include(admin.site.urls)),
 				    url(r'^create_post/', include('create_post.urls')),
+				    url(r'^first_page/', include('first_page.urls')),
     				)
+	
 
