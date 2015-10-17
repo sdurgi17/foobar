@@ -7,6 +7,7 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 	<script src="{% static 'feed/js/project.js' %}"></script>
+	<!-- // <script src="{% static 'feed/css/index.css' %}"></script> -->
 	<script type="text/javascript">
 		function getParameterByName(name) {
 		    name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
@@ -31,7 +32,7 @@
 	        data = data.replace(/[\u0000-\u0019]+/g,"");
 			data = JSON.parse(data);
 			console.log(data);
-			render_data(data, getParameterByName('user_id'));
+			render_data(data); //, getParameterByName('user_id'));
 		}
 	</script>
 	<style type="text/css">
@@ -41,6 +42,97 @@
   		clear: none;
   		margin: 1%;
 	}
+
+	* {margin: 0; padding: 0;}
+ 
+	.body {
+	  background: #fffff;
+	}
+	 
+	.card {
+	  position: relative;
+	  float: left;
+	  margin-right: 10px;
+	  margin-top: 10px;
+	  width: 200px;
+	  height: 200px;
+	  border-radius: 10px;
+	  background: #fff;
+	  -webkit-box-shadow: 3px 3px 7px rgba(0,0,0,0.3);
+	  box-shadow: 3px 3px 7px rgba(0,0,0,0.3);
+	}
+
+	.text{
+	  text-align: center;
+	  font: 20px/42px Georgia, Times New Roman, serif;
+	}
+
+	.card p {
+	  text-align: center;
+	  font: 30px/42px Georgia, Times New Roman, serif;
+	}
+
+	.hand {
+	  margin: 50px;
+	}
+	 
+	/* For modern browsers */
+	.hand:before,
+	.hand:after {
+	    content:"";
+	    display:table;
+	}
+	  
+	.hand:after {
+	    clear:both;
+	}
+	  
+	/* For IE 6/7 (trigger hasLayout) */
+	.hand {
+	    zoom:1;
+	}
+	 
+	.card:hover {
+	  cursor: pointer;
+	}
+
+
+	.grow > .card {
+	  -webkit-transition: all 0.5s ease;
+	  -moz-transition: all 0.5s ease;
+	  -o-transition: all 0.5s ease;
+	  -ms-transition: all 0.5s ease;
+	  transition: all 0.5s ease;
+	}
+
+	.grow > .card:hover {
+	  -webkit-box-shadow: 1px 1px 7px rgba(0,0,0,0.9);
+	  box-shadow: 1px 1px 7px rgba(0,0,0,0.9);
+	  -webkit-transform: scale(1.05,1.05);
+	  -moz-transform: scale(1.05,1.05);
+	  -o-transform: scale(1.05,1.05);
+	  -ms-transform: scale(1.05,1.05);
+	  transform: scale(1.05,1.05);
+	}
+
+	#media-grid {
+	 
+	    .media-grid(2);
+	 
+	    & > div {
+	      margin: 0 auto 24px;
+	      padding: 24px;
+	      background: #ddd;
+	      text-align: center;
+	    }
+	    & > div:nth-child(2n) {
+	      height: 200px;
+	    }
+	    & > div:nth-child(5n) {
+	      height: 130px;
+	    }
+	}
+
 	</style>
 </head>
 
@@ -51,7 +143,9 @@
 		</div>	
 		<dt class="lead">Projects</dt>
 		<div id="project" class="table-responsive">
-			<table id="project_table" class="table table-striped table-bordered table-hover table-condensed">
+			<div id="project_display_div" class="hand grow">
+			</div>
+			<!-- <table id="project_table" class="table table-striped table-bordered table-hover table-condensed">
 				<thead>	
 					<tr class="active">
 						<th style="width:70%;">Project Name</th>
@@ -61,7 +155,7 @@
 				<tbody id="project_body" class="display">
 
 				</tbody>
-			</table>
+			</table> -->
 		</div>
 		<div class="same_horizon">
 			<div id="project_contribution" class="table-responsive">
