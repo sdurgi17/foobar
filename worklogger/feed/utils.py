@@ -55,7 +55,7 @@ def get_user_feed(user_id):
     for row in project_rows_unprocessed:
         if not project_rows.get(row.project.id):
             project_rows[row.project.id] = project_details[row.project.id]
-            project_rows[row.project.id]['updated_at'] = str(row.updated_at)
+            project_rows[row.project.id]['updated_at'] = str(row.updated_at.date())
     return project_rows
 
 
