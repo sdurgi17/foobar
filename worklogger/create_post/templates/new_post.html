@@ -312,13 +312,6 @@ textarea {
           <form action="/create_post/create_post" method="post">
           
           <div class="field-wrap">
-            <label id="project_label">
-              Project<span class="req">*</span>
-            </label>
-            <input id="project_textarea" name="project_name" type="text"required autocomplete="off"/>
-          </div>
-          
-          <div class="field-wrap">
             <label id="title_label">
               Title<span class="req">*</span>
             </label>
@@ -340,7 +333,7 @@ textarea {
           </div>
 
           <INPUT type="hidden" name="user_id" value={{user}}>
-          <INPUT type="hidden" name="project_id" value={{project}}>
+          <INPUT type="hidden" name="project_name" value={{project}}>
           <button type="submit" class="button button-block"/>Create Post</button>
           
           </form>

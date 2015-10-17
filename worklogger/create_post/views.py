@@ -22,7 +22,7 @@ def store_uid(request):
 			print user_id, project_name, project_details
 			new_project = Project(name= project_name, user=user, details=project_details)
 			new_project.save()
-		return render(request, 'new_post.html' , dict(user = user_id, project = new_project.id))
+		return render(request, 'new_post.html' , dict(user = user_id, project = new_project.name))
 	except Exception as e:
 		return HttpResponse(json.dumps(e))
 
@@ -47,12 +47,10 @@ def create_post(request):
 			user_id = request.POST.get('user_id', 1)
 			print "user_id = ", user_id
 			user = User.objects.filter(id = user_id)[0]
-			project_id = request.POST.get('project_id', -1)
-			# return HttpResponse(json.dumps(user_id+project_id))
-			if project_id == -1:
-				project_id = Project.objects.filter(name = 'random', user = user)[0]
-			else:
-				project_id = Project.objects.filter(id = project_id)[0]
+			project_name = request.POST.get('project_name', 'random')
+
+			project_id = Project.objects.filter(name = project_name, user = user)[0]
+			
 			title = request.POST.get('title', '')
 			details = request.POST.get('details', '')
 			access_type = request.POST.get('access_type', 1)
