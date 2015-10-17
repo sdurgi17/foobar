@@ -23,20 +23,26 @@ function render_data(posts_data, user_id) {
 	}
 
 	var tbody = document.getElementById("hard_task_body");
+
 	for (var post_id in posts_data['hard_task']) {
-			var tr = document.createElement('tr');
-			var td1 = document.createElement('td');
-			var td2 = document.createElement('td'); 
+			var divs =  document.createElement('div');
+			divs.className = 'card';
+			divs.innerHTML = posts_data['hard_task'][post_id]['project_name'];
 
-			td1.innerHTML = posts_data['hard_task'][post_id]['project_name'];
-			td2.innerHTML = posts_data['hard_task'][post_id]['count'];
+			// var tr = document.createElement('tr');
+			// var td1 = document.createElement('td');
+			// var td2 = document.createElement('td'); 
 
-			td1.style.width = "70%";
+			// td1.innerHTML = posts_data['hard_task'][post_id]['project_name'];
+			// td2.innerHTML = posts_data['hard_task'][post_id]['count'];
 
-			tr.appendChild(td1);
-			tr.appendChild(td2);
+			// td1.style.width = "70%";
 
-			tbody.appendChild(tr);
+			// tr.appendChild(td1);
+			// tr.appendChild(td2);
+
+			// tbody.appendChild(tr);
+			tbody.appendChild(divs);
 	}
 
 	var tbody = document.getElementById("user_tags_body");

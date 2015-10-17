@@ -9,6 +9,7 @@ import urllib2
 import datetime
 from django.conf import settings
 from commons.models import User
+import feed
 
 from django.views.decorators.csrf import csrf_exempt
 
@@ -25,10 +26,22 @@ def login(request):
             user_exist = User.objects.filter(email= email)[0]
             p_ = user_exist.password
             if password == user_exist.password:
-                user_id = (User.objects.filter(email= email)[0]).id
-                print user_id
-                json_dump = json.dumps({'user_id':user_id})
-                return  render(request,'feed/project_view.html', {'json_dump' : json_dump})
+                user_id = 1 # (User.objects.filter(email= email)[0]).id
+                user_feed = feed.utils.get_user_feed(user_id)
+                print "shbfgkj => "
+                print user_feed
+                project_contribution = feed.utils.get_user_project_contribution(user_id)
+                user_tags = feed.utils.get_user_tags(user_id)
+
+                data = {
+                    "user_id": user_id,
+                    "user_feed": user_feed,
+                    "project_contribution": project_contribution,
+                    "user_tags": user_tags
+                }
+                json_dump = json.dumps(data)
+
+                return  render(request,'feed/project_view.html', {'json_dump': json_dump, 'user_id':user_id})
             else:
                 return HttpResponse("PASSWORD DO NOT MATCH")
         except Exception as e:
