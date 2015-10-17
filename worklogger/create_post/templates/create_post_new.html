@@ -1,73 +1,53 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-
+ 
 <script>
-function setUserId() {
-  var element = document.getElementById('user_id_field');
-  element.value = getParameterByName('user_id');
-}
-
+ 
 $(document).ready(function() {
-
-$('.form').find('input, textarea').on('keyup blur focus', function (e) {
-  
+ 
+$('.form').find('input, textarea').on('keyup blur focus', function(e) {
+ 
   var $this = $(this),
-      label = $this.prev('label');
-
-	  if (e.type === 'keyup') {
-			if ($this.val() === '') {
-          label.removeClass('active highlight');
-        } else {
-          label.addClass('active highlight');
-        }
-    } else if (e.type === 'blur') {
-    	if( $this.val() === '' ) {
-    		label.removeClass('active highlight'); 
-			} else {
-		    label.removeClass('highlight');   
-			}   
-    } else if (e.type === 'focus') {
-      
-      if( $this.val() === '' ) {
-    		label.removeClass('highlight'); 
-			} 
-      else if( $this.val() !== '' ) {
-		    label.addClass('highlight');
-			}
+    label = $this.prev('label');
+ 
+  if (e.type === 'keyup') {
+    if ($this.val() === '') {
+      label.removeClass('active highlight');
+    } else {
+      label.addClass('active highlight');
     }
-
+  } else if (e.type === 'blur') {
+    if ($this.val() === '') {
+      label.removeClass('active highlight');
+    } else {
+      label.removeClass('highlight');
+    }
+  } else if (e.type === 'focus') {
+ 
+    if ($this.val() === '') {
+      label.removeClass('highlight');
+    } else if ($this.val() !== '') {
+      label.addClass('highlight');
+    }
+  }
+ 
 });
-
-$('.tab a').on('click', function (e) {
-  
-  e.preventDefault();
-  
-  $(this).parent().addClass('active');
-  $(this).parent().siblings().removeClass('active');
-  
-  target = $(this).attr('href');
-
-  $('.tab-content > div').not(target).hide();
-  
-  $(target).fadeIn(600);
-  
-});
-
-$('#name_textarea').on({
+ 
+$('#project_textarea').on({
     mouseenter: function(){
-        $('#name_label').hide()
+        $('#project_label').hide()
     },
     mouseleave: function(){
-        var inp = $("#name_textarea").val();
+        var inp = $("#project_textarea").val();
         if(inp.length == 0)
         {
-           $('#name_label').show()
+           $('#project_label').show()
         }
     },
     keypress: function(){
-        $('#name_label').hide()
+        $('#project_label').hide()
     },
 });
-
+ 
 $('#details_textarea').on({
     mouseenter: function(){
         $('#details_label').hide()
@@ -83,19 +63,47 @@ $('#details_textarea').on({
         $('#details_label').hide()
     },
 });
-
+ 
+ 
+$('#title_textarea').on({
+    mouseenter: function(){
+        $('#title_label').hide()
+    },
+    mouseleave: function(){
+        var inp = $("#title_textarea").val();
+        if(inp.length == 0)
+        {
+           $('#title_label').show()
+        }
+    },
+    keypress: function(){
+        $('#title_label').hide()
+    },
 });
-
-
-function getParameterByName(name) {
-   name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
-   var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
-       results = regex.exec(location.search);
-   return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
-}
-
+ 
+ 
+$('#tags_textarea').on({
+    mouseenter: function(){
+        $('#tags_label').hide()
+    },
+    mouseleave: function(){
+        var inp = $("#tags_textarea").val();
+        if(inp.length == 0)
+        {
+           $('#tags_label').show()
+        }
+    },
+    keypress: function(){
+        $('#tags_label').hide()
+    },
+});
+ 
+});
+ 
 </script>
-
+ 
+ 
+ 
 <style>
 *, *:before, *:after {
   box-sizing: border-box;
@@ -106,7 +114,7 @@ html {
 }
 
 body {
-  background: #c1bdba;
+  background: #ffffff;
   font-family: 'Titillium Web', sans-serif;
 }
 
@@ -121,7 +129,7 @@ a:hover {
 }
 
 .form {
-  background: rgba(19, 35, 47, 0.9);
+  background: #ffffff;
   padding: 40px;
   max-width: 600px;
   margin: 40px auto;
@@ -155,11 +163,11 @@ a:hover {
 }
 .tab-group li a:hover {
   background: #179b77;
-  color: #ffffff;
+  color: #000000;
 }
 .tab-group .active a {
   background: #1ab188;
-  color: #ffffff;
+  color: #000000;
 }
 
 /*.tab-content > div:last-child {
@@ -168,7 +176,7 @@ a:hover {
 */
 h1 {
   text-align: center;
-  color: #ffffff;
+  color: #000000;
   font-weight: 300;
   margin: 0 0 40px;
 }
@@ -179,7 +187,7 @@ label {
       -ms-transform: translateY(6px);
           transform: translateY(6px);
   left: 13px;
-  color: rgba(255, 255, 255, 0.5);
+  color: #a0b3b0;
   -webkit-transition: all 0.25s ease;
           transition: all 0.25s ease;
   -webkit-backface-visibility: hidden;
@@ -203,7 +211,7 @@ label.active .req {
 }
 
 label.highlight {
-  color: #ffffff;
+  color: #000000;
 }
 
 input, textarea {
@@ -215,7 +223,7 @@ input, textarea {
   background: none;
   background-image: none;
   border: 1px solid #a0b3b0;
-  color: #ffffff;
+  color: #000000;
   border-radius: 0;
   -webkit-transition: border-color .25s ease, box-shadow .25s ease;
           transition: border-color .25s ease, box-shadow .25s ease;
@@ -230,7 +238,7 @@ input, textarea {
   background: none;
   background-image: none;
   border: 1px solid #a0b3b0;
-  color: #ffffff;
+  color: #000000;
   border-radius: 0;
   -webkit-transition: border-color .25s ease, box-shadow .25s ease;
           transition: border-color .25s ease, box-shadow .25s ease;
@@ -238,7 +246,7 @@ input, textarea {
 
 input:focus, textarea:focus {
   outline: 0;
-  border-color: #1ab188;
+  border-color: #300030;
 }
 
 textarea {
@@ -260,14 +268,14 @@ textarea {
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: .1em;
-  background: #1ab188;
+  background: #a0b3b0;
   color: #ffffff;
   -webkit-transition: all 0.5s ease;
           transition: all 0.5s ease;
   -webkit-appearance: none;
 }
 .button:hover, .button:focus {
-  background: #179b77;
+  background: #300030;
 }
 
 .button-block {
@@ -277,31 +285,52 @@ textarea {
 
 </style>
 
+ 
+ 
 <div class="form">
+     
       <div class="tab-content">
-        <div id="project">
-          <h1>Create new Project</h1>
-          <form action="/create_post/store_uid" method="post">
+        <div id="post">  
+          <h1>Create a Post</h1>
+         
+          <form action="/create_post/create_post" method="post">
+         
           <div class="field-wrap">
-            <label id="name_label">
-              Project Name<span class="req">*</span>
+            <label id="project_label">
+              Project<span class="req"></span>
             </label>
-            <input name="project_name"id="name_textarea"type="text"required autocomplete="off"/>
+            <input id="project_textarea" name="project_name" type="text"required autocomplete="off"/>
           </div>
-
+         
+ 
+          <div class="field-wrap">
+            <label id="title_label">
+              Title<span class="req">*</span>
+            </label>
+            <input id="title_textarea" name="title" type="text"required autocomplete="off"/>
+          </div>
+         
           <div class="field-wrap">
             <label id="details_label">
-              Project Details<span class="req">*</span>
+              Details<span class="req">*</span>
             </label>
-            <textarea name="project_details"id="details_textarea"class="details"type="text"></textarea>
+            <textarea id="details_textarea" name="details" class="details"type="text"></textarea>
           </div>
-
-          <INPUT id="user_id_field" type="hidden" name="user_id">
-          <button type="submit" class="button button-block" onClick="setUserId()"/>Create Project</button>
-          
+         
+          <div class="field-wrap">
+            <label id="tags_label">
+              Tags<span class="req"></span>
+            </label>
+            <input id="tags_textarea"type="text" name="tags" required autocomplete="off"/>
+          </div>
+ 
+          <INPUT type="hidden" name="user_id" value={{user}}>
+          <button type="submit" class="button button-block"/>Create Post</button>
+         
           </form>
-
+ 
         </div>
+       
       </div>
-      
+     
 </div>

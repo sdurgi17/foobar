@@ -15,6 +15,7 @@ from django.views.decorators.csrf import csrf_exempt
 
 @csrf_exempt
 def login(request):
+    print request.POST
     if request.method == 'POST':
         context = RequestContext(request,
                                {'request': request,
@@ -25,8 +26,7 @@ def login(request):
             user_exist = User.objects.filter(email= email)[0]
             p_ = user_exist.password
             if password == user_exist.password:
-                user_id = (User.objects.filter(email= email)[0]).id
-
+                user_id = 1 # (User.objects.filter(email= email)[0]).id
                 user_feed = feed.utils.get_user_feed(user_id)
                 print "shbfgkj => "
                 print user_feed
@@ -102,23 +102,27 @@ def signup_facebook(request):
                             'user': request.user})
     
     try:
+        print request.POST
         name = request.user
+        print name
         email =  request.user.email
-        session_key = request.COOKIES[settings.SESSION_COOKIE_NAME]
+        print email
+        # session_key = request.COOKIES[settings.SESSION_COOKIE_NAME]
 
     except Exception as e:
         print "Cannot make account:", str(e)
-        return render_to_response('feed/home.html',context_instance=context)
+        return render(request, 'feed/home.html',{})
     user_old = User.objects.filter(email= email)
-    
+    print "user = ", user_old
     if user_old:
         return HttpResponse("USER EXISTS")
     else:
-        User_object = User(name=name, email=email,session_id=session_key)
+        User_object = User(name=name, email=email)#,session_id=session_key)
         User_object.save()
+        user_id = (User.objects.filter(email= email)[0]).id
+
     
-    return render_to_response('feed/home.html',
-                             context_instance=context)
+    return render(request, 'feed/project_view.html', {'user_id':user_id})
 
 
 

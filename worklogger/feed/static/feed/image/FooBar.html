@@ -1,13 +1,13 @@
-{% load staticfiles %}
-<html>
-<head>
+
+<!-- saved from url=(0039)http://10.1.6.211:8000/first_page/login -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<title>FooBar</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-	<script src="{% static 'feed/js/project.js' %}"></script>
-	<!-- // <script src="{% static 'feed/css/index.css' %}"></script> -->
+	<link rel="stylesheet" href="./FooBar_files/bootstrap.min.css">
+	<script src="./FooBar_files/jquery.min.js"></script>
+    <script src="./FooBar_files/bootstrap.min.js"></script>
+	<script src="./FooBar_files/project.js"></script>
+	<!-- // <script src="/static/feed/css/index.css"></script> -->
 	<script type="text/javascript">
 		function getParameterByName(name) {
 		    name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
@@ -17,7 +17,7 @@
 		}
 
 		window.onload = function() {
-			var data = "{{json_dump}}";
+			var data = "{&quot;project_contribution&quot;: {&quot;41&quot;: {&quot;count&quot;: 2, &quot;project_name&quot;: &quot;sf&quot;}, &quot;39&quot;: {&quot;count&quot;: 1, &quot;project_name&quot;: &quot;sf&quot;}, &quot;37&quot;: {&quot;count&quot;: 1, &quot;project_name&quot;: &quot;sf&quot;}, &quot;1&quot;: {&quot;count&quot;: 33, &quot;project_name&quot;: &quot;nimesh&quot;}}, &quot;user_feed&quot;: {&quot;41&quot;: {&quot;updated_at&quot;: &quot;2015-10-17&quot;, &quot;details&quot;: &quot;sf&quot;, &quot;is_completed&quot;: false, &quot;id&quot;: 41, &quot;name&quot;: &quot;sf&quot;}, &quot;1&quot;: {&quot;updated_at&quot;: &quot;2015-10-16&quot;, &quot;details&quot;: &quot;no details&quot;, &quot;is_completed&quot;: false, &quot;id&quot;: 1, &quot;name&quot;: &quot;nimesh&quot;}, &quot;37&quot;: {&quot;updated_at&quot;: &quot;2015-10-17&quot;, &quot;details&quot;: &quot;sf&quot;, &quot;is_completed&quot;: false, &quot;id&quot;: 37, &quot;name&quot;: &quot;sf&quot;}, &quot;39&quot;: {&quot;updated_at&quot;: &quot;2015-10-17&quot;, &quot;details&quot;: &quot;sf&quot;, &quot;is_completed&quot;: false, &quot;id&quot;: 39, &quot;name&quot;: &quot;sf&quot;}}, &quot;user_id&quot;: 1, &quot;user_tags&quot;: [{&quot;tag_name&quot;: &quot;a&quot;, &quot;tag_count&quot;: 1}, {&quot;tag_name&quot;: &quot;b&quot;, &quot;tag_count&quot;: 3}, {&quot;tag_name&quot;: &quot;q&quot;, &quot;tag_count&quot;: 3}]}";
 			data = data.replace(/&quot;/ig, '"');
 	        data = data.replace(/u&#39;/g, '"');
 	        data = data.replace(/&#39;/g, '"');
@@ -134,18 +134,18 @@
 	}
 
 	</style>
-</head>
+<style type="text/css"></style></head>
 
-<body background="http://www.wespotlight.com/wp-content/uploads/2014/01/new-york-black-and-white-skyline-photography-skyline-buildings-black-and-white-hd-wallpapers-in-skyline.jpg">
+<body background="./FooBar_files/new-york-black-and-white-skyline-photography-skyline-buildings-black-and-white-hd-wallpapers-in-skyline.jpg">
 	<div id="feed" class="container">
 		<div>
-			<button type="button" class="btn btn-primary" style="margin:30px;" onClick="create_new_project(getParameterByName('user_id'))">Create New Project</button>
+			<button type="button" class="btn btn-primary" style="margin:30px;" onclick="create_new_project(getParameterByName(&#39;user_id&#39;))">Create New Project</button>
 		</div>	
 		
 		<div id="project" class="table-responsive">
-			<h3 class="lead" ><b>Projects</b></h3>
+			<h3 class="lead"><b>Projects</b></h3>
 			<div id="project_display_div" class="hand grow">
-			</div>
+			<div class="card"><div class="text"><a href="http://10.1.6.211:8000/feed/project_tasks?user_id=1&project_id=1&project_name=nimesh">nimesh</a></div><div class="text">no details</div><div class="text">2015-10-16</div></div><div class="card"><div class="text"><a href="http://10.1.6.211:8000/feed/project_tasks?user_id=1&project_id=37&project_name=sf">sf</a></div><div class="text">sf</div><div class="text">2015-10-17</div></div><div class="card"><div class="text"><a href="http://10.1.6.211:8000/feed/project_tasks?user_id=1&project_id=39&project_name=sf">sf</a></div><div class="text">sf</div><div class="text">2015-10-17</div></div><div class="card"><div class="text"><a href="http://10.1.6.211:8000/feed/project_tasks?user_id=1&project_id=41&project_name=sf">sf</a></div><div class="text">sf</div><div class="text">2015-10-17</div></div></div>
 			<!-- <table id="project_table" class="table table-striped table-bordered table-hover table-condensed">
 				<thead>	
 					<tr class="active">
@@ -158,8 +158,8 @@
 				</tbody>
 			</table> -->
 		</div>
-		<!-- <div class="same_horizon">
-			<div id="project_contribution" class="table-responsive" style="color:white;" >
+		<div class="same_horizon">
+			<div id="project_contribution" class="table-responsive" style="color:white;">
 				<h3 class="lead"><b>Contribution in each project</b></h3>
 				<table id="project_contribution_table" style="background:white;" class="table table-striped table-bordered table-hover table-condensed">
 					<thead>
@@ -170,7 +170,7 @@
 					</thead>
 					<tbody id="projects_contribution_body" class="display">
 
-					</tbody>
+					<tr><td style="width: 70%;">nimesh</td><td>33</td></tr><tr><td style="width: 70%;">sf</td><td>1</td></tr><tr><td style="width: 70%;">sf</td><td>1</td></tr><tr><td style="width: 70%;">sf</td><td>2</td></tr></tbody>
 				</table>
 			</div>
 			<div id="project_tags" class="table-responsive" style="color:white;">
@@ -184,10 +184,10 @@
 					</thead>
 					<tbody id="projects_tags_body" class="display">
 						
-					</tbody>
+					<tr><td style="width: 70%;">a</td><td>1</td></tr><tr><td style="width: 70%;">b</td><td>3</td></tr><tr><td style="width: 70%;">q</td><td>3</td></tr></tbody>
 				</table>
 			</div>
-		</div> -->
+		</div>
 	</div>
-</body>
-</html>
+
+</body></html>

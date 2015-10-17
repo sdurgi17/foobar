@@ -145,12 +145,12 @@ function render_data(posts_data, user_id) {
 			tr.appendChild(td1);
 			tr.appendChild(td2);
 
-			tbody.appendChild(tr);	
+			tbody.appendChild(tr);
 	}
 }
 
 function create_new_post(user_id, project_id) {
-	window.location = '../create_post/create_post_old?user_id=' + 16 + '&project_id=' + 60;
+	window.location = '../create_post/create_post?user_id=' + 16 + '&project_id=' + 60;
 }
 
 function create_new_project(user_id) {

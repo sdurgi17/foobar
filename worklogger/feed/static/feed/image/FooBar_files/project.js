@@ -1,6 +1,6 @@
 function render_data(projects_data) {
 
-	var user_id = projects_data['user_id']
+	var user_id = 1;// projects_data['user_id']
 	console.log(user_id);
 	var tbody = document.getElementById("project_display_div");
 	for (var project_id in projects_data['user_feed']) {
@@ -47,7 +47,7 @@ function render_data(projects_data) {
 			tbody.appendChild(divs);
 	}
 
-	var tbody2 = document.getElementById("projects_contribution_body");
+	var tbody = document.getElementById("projects_contribution_body");
 	for (var project_id in projects_data['project_contribution']) {
 		
 			var tr = document.createElement('tr');
@@ -62,10 +62,10 @@ function render_data(projects_data) {
 			tr.appendChild(td1);
 			tr.appendChild(td2);
 
-			tbody2.appendChild(tr);
+			tbody.appendChild(tr);
 	}
 
-	var tbody3 = document.getElementById("projects_tags_body");
+	var tbody = document.getElementById("projects_tags_body");
 	for (var project_id in projects_data['user_tags']) {
 			var tr = document.createElement('tr');
 			var td1 = document.createElement('td');
@@ -79,13 +79,10 @@ function render_data(projects_data) {
 			tr.appendChild(td1);
 			tr.appendChild(td2);
 
-			tbody3.appendChild(tr);
+			tbody.appendChild(tr);
 	}
-
-	// window.location = '../feed/user_projects?user_id=' + user_id;
 }
-	
+
 function create_new_project(user_id) {
-	window.location = '../create_post/create_project?user_id=' + 16;
+	window.location = '../create_post/create_project?user_id=' + user_id;
 }
-
